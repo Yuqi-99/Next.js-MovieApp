@@ -1,5 +1,8 @@
 .container {
   padding: 0 2rem;
+  background: #000000;
+  /* background: #e75353; */
+  height: calc(100vh);
 }
 
 .main {
@@ -10,15 +13,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #000000;
 }
 
 .footer {
   display: flex;
   flex: 1;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
   justify-content: center;
   align-items: center;
+  background: #000000;
 }
 
 .footer a {
@@ -26,6 +30,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
+  color: #ffffff;
 }
 
 .title a {
