@@ -6,6 +6,8 @@ import {
   UnstyledButton,
   createStyles,
   Stack,
+  Box,
+  MediaQuery,
 } from "@mantine/core";
 import {
   TablerIcon,
@@ -23,10 +25,22 @@ const useStyles = createStyles((theme) => ({
     borderRadius: 10,
     marginTop: "4%",
     backgroundColor: "#171E31",
-    width: 80,
+    width: 60,
     height: 600,
     borderWidth: 0,
   },
+
+  navbar2: {
+    alignItems: "center",
+    // paddingTop: 10,
+    borderRadius: 10,
+    // marginTop: "4%",
+    backgroundColor: "#171E31",
+    width: '100%',
+    height: 60,
+    borderWidth: 0,
+  },
+
   link: {
     width: 50,
     height: 50,
@@ -80,8 +94,8 @@ const NavLink: FC<NavbarLinkProps> = ({
 const mockdata = [
   { icon: IconHome2, label: "Home", path: "/" },
   { icon: IconCategory, label: "Category", path: "/" },
-  { icon: IconMovie, label: "Movie", path: "/" },
-  { icon: IconDeviceTv, label: "TV", path: "/" },
+  { icon: IconMovie, label: "Movie", path: "/moviegenre" },
+  { icon: IconDeviceTv, label: "TV", path: "/tvgenre" },
 ];
 
 const NavigationBar = () => {
@@ -102,11 +116,13 @@ const NavigationBar = () => {
 
   return (
     <>
-      <Navbar className={classes.navbar}>
-        <Navbar.Section grow>
-          <Stack spacing={127}>{nav}</Stack>
-        </Navbar.Section>
-      </Navbar>
+      {/* <MediaQuery smallerThan="sm" styles={{ display: 'none' }}> */}
+        <Navbar className={classes.navbar}>
+          <Navbar.Section grow>
+            <Stack spacing={127}>{nav}</Stack>
+          </Navbar.Section>
+        </Navbar>
+      {/* </MediaQuery> */}
     </>
   );
 };

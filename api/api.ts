@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { ApiRequestConfig } from '../../type/api-type';
-import { API_BASE_URL } from '../../utils/constants';
+import { ApiRequestConfig } from '../type/api-type';
+import { API_BASE_URL } from '../utils/constants';
 
 // Default config for the axios instance
 const axiosParams = {

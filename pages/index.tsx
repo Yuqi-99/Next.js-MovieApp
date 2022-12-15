@@ -1,11 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Navigationbar from '../components/navigationBar'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import Navigationbar from "../components/NavigationBar";
+import PopularMovie from "../components/PopularMovie";
+import TrendingMovie from "../components/TrendingMovie";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
-    <></>
+    <div>
+      <TrendingMovie />
+      <PopularMovie />
+    </div>
     // <div className={styles.container}>
     //   <Navigationbar/>
 
@@ -22,5 +27,5 @@ export default function Home() {
     //     </a>
     //   </footer>
     // </div>
-  )
+  );
 }

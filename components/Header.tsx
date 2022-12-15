@@ -23,14 +23,15 @@ const useStyles = createStyles(() => ({
   },
   input: {
     width: "100%",
-    marginRight: '2%',
+    marginRight: "2%",
     // marginTop: "5%",
     color: "#FFFFFF",
     input: { color: "#FFFFFF", backgroundColor: "#171E31" },
   },
 
   btn: {
-    backgroundColor: "#5A6A90",
+    // backgroundColor: "#5A6A90",
+    // padding: 7,
 
     "&:hover": {
       opacity: 1,
@@ -55,7 +56,7 @@ const Header = (props: TextInputProps) => {
           rightSectionWidth={42}
           {...props}
         />
-        <Button className={classes.btn} size='md'>
+        <Button className={classes.btn} size='md' radius='lg' variant='gradient' opacity={0.7}>
           Search
         </Button>
       </div>

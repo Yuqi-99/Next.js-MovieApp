@@ -11,9 +11,9 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "center",
     alignSelf: "center",
     height: "auto",
-    backgroundColor: "#000000",
+    // backgroundColor: "#000000",
     // backgroundColor: "#FF5959",
-    width: "100%",
+    // width: "100%",
   },
   footerA: {
     display: "flex",
@@ -21,6 +21,7 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     flexGrow: 1,
     color: "#FFFFFF",
+    marginBottom:10
   },
 }));
 
