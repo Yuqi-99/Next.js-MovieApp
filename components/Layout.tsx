@@ -12,7 +12,11 @@ interface Props {
 const useStyles = createStyles((theme) => ({
   flex: {
     width: "100%",
-    height:'100%'
+    height: "100%",
+  },
+
+  div: {
+    // position: "fixed",
   },
 }));
 
@@ -23,7 +27,9 @@ const Layout: FC<Props> = ({ children }) => {
     <>
       <div className={styles.container}>
         <Flex direction='row'>
-          <NavigationBar />
+          <div className={styles.div}>
+            <NavigationBar />
+          </div>
           <Flex direction='column' className={classes.flex}>
             <Header />
             {children}

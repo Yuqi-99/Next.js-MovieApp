@@ -9,14 +9,13 @@ import {
   Image,
   BackgroundImage,
   Box,
-  Card,
 } from "@mantine/core";
 import MovieSecHeader from "./MovieSecHeader";
 import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getPopular } from "../api/movieApi";
+import { getNowPlaying, getTopRated} from "../api/movieApi";
 
 interface CardProps {
   image: string;
@@ -63,41 +62,35 @@ const useStyles = createStyles((theme) => ({
   },
 
   grid: {
-    // backgroundColor: "#FFFFFF",
     marginTop: "3%",
   },
-
-  movie: {
-    "&:hover": {
-      transform: "scale(1.01)",
-      boxShadow: theme.shadows.lg,
-      backgroundColor: "#979797",
-    },
-  },
 }));
-
-const PopularMovie = () => {
+const TopRatedMovie = () => {
   const { classes, cx } = useStyles();
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const {
-    data: popularData,
-    isLoading: pIsLoading,
-    isSuccess: pIsSuccess,
-  } = useQuery(["popular"], getPopular);
+    data: TopRatedData,
+    isLoading: tRIsLoading,
+    isSuccess: tRIsSuccess,
+  } = useQuery(["TopRated"], getTopRated);
+
+  // {
+  //   tRIsSuccess && console.log("🥥", TopRatedData);
+  // }
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Popular"} />
+        <MovieSecHeader title={"Top Rated"} />
       </div>
       <Grid grow gutter='sm' className={classes.grid}>
-        {pIsSuccess &&
+        {tRIsSuccess &&
           //@ts-ignore
-          popularData.results.slice(0, 7).map((item) => {
+          TopRatedData.results.slice(0,7).map((item) => {
             return (
-              <Grid.Col span={3} key={item.id} className={classes.movie}>
-                <Box component='a' href='#'>
+              <Grid.Col span={3} key={item.id}>
+                <Box>
                   <Image
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
@@ -121,4 +114,4 @@ const PopularMovie = () => {
   );
 };
 
-export default PopularMovie;
+export default TopRatedMovie;

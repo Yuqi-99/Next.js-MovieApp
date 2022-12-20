@@ -9,7 +9,6 @@ import {
   Image,
   BackgroundImage,
   Box,
-  Card,
 } from "@mantine/core";
 import MovieSecHeader from "./MovieSecHeader";
 import { Carousel } from "@mantine/carousel";
@@ -17,6 +16,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getPopular } from "../api/movieApi";
+import { getPopularTv } from "../api/tvApi";
+import TvSecHeader from "./TvSecHeader";
 
 interface CardProps {
   image: string;
@@ -66,38 +67,30 @@ const useStyles = createStyles((theme) => ({
     // backgroundColor: "#FFFFFF",
     marginTop: "3%",
   },
-
-  movie: {
-    "&:hover": {
-      transform: "scale(1.01)",
-      boxShadow: theme.shadows.lg,
-      backgroundColor: "#979797",
-    },
-  },
 }));
 
-const PopularMovie = () => {
+const PopularTv = () => {
   const { classes, cx } = useStyles();
   const theme = useMantineTheme();
   const mobile = useMediaQuery(`(max-width: ${theme.breakpoints.sm}px)`);
   const {
-    data: popularData,
-    isLoading: pIsLoading,
-    isSuccess: pIsSuccess,
-  } = useQuery(["popular"], getPopular);
+    data: popularTvData,
+    isLoading: pTvIsLoading,
+    isSuccess: pTvIsSuccess,
+  } = useQuery(["popularTv"], getPopularTv);
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Popular"} />
+        <TvSecHeader title={"Popular"} />
       </div>
       <Grid grow gutter='sm' className={classes.grid}>
-        {pIsSuccess &&
+        {pTvIsSuccess &&
           //@ts-ignore
-          popularData.results.slice(0, 7).map((item) => {
+          popularTvData.results.slice(0, 7).map((item) => {
             return (
-              <Grid.Col span={3} key={item.id} className={classes.movie}>
-                <Box component='a' href='#'>
+              <Grid.Col span={3} key={item.id}>
+                <Box>
                   <Image
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
@@ -107,10 +100,10 @@ const PopularMovie = () => {
                 </Box>
                 <div style={{ marginTop: "auto" }}>
                   <Text className={classes.category} size='xs'>
-                    {item.release_date.slice(0, 4)} . Movie
+                    {item.first_air_date.slice(0, 4)} . TV
                   </Text>
                   <Title order={3} className={classes.title}>
-                    {item.title}
+                    {item.name}
                   </Title>
                 </div>
               </Grid.Col>
@@ -121,4 +114,4 @@ const PopularMovie = () => {
   );
 };
 
-export default PopularMovie;
+export default PopularTv;

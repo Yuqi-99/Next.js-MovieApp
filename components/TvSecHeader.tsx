@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
   movie_text: {
     borderWidth: 2,
     borderColor: "#FFFFFF",
-    color: "#FFFFFF",
+    color: "#000000",
     fontSize: "10px",
     marginTop:15
   },
@@ -25,7 +25,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const MovieSecHeader: FC<TextProps> = ({ title }) => {
+const TvSecHeader: FC<TextProps> = ({ title }) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -40,8 +40,8 @@ const MovieSecHeader: FC<TextProps> = ({ title }) => {
           </Text>
           <div>
             <Box className={classes.movie_box}>
-              <Badge variant='outline' className={classes.movie_text}>
-                MOVIE
+              <Badge color='white' className={classes.movie_text}>
+                TV SERIES
               </Badge>
             </Box>
           </div>
@@ -61,4 +61,4 @@ const MovieSecHeader: FC<TextProps> = ({ title }) => {
   );
 };
 
-export default MovieSecHeader;
+export default TvSecHeader;

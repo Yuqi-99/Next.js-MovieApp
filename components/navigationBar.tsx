@@ -20,13 +20,14 @@ import { useRouter } from "next/router";
 
 const useStyles = createStyles((theme) => ({
   navbar: {
+    position: "fixed",
     alignItems: "center",
     paddingTop: 10,
     borderRadius: 10,
     marginTop: "4%",
     backgroundColor: "#171E31",
     width: 60,
-    height: 600,
+    // height: 600,
     borderWidth: 0,
   },
 
@@ -36,7 +37,7 @@ const useStyles = createStyles((theme) => ({
     borderRadius: 10,
     // marginTop: "4%",
     backgroundColor: "#171E31",
-    width: '100%',
+    width: "100%",
     height: 60,
     borderWidth: 0,
   },
@@ -117,11 +118,11 @@ const NavigationBar = () => {
   return (
     <>
       {/* <MediaQuery smallerThan="sm" styles={{ display: 'none' }}> */}
-        <Navbar className={classes.navbar}>
-          <Navbar.Section grow>
-            <Stack spacing={127}>{nav}</Stack>
-          </Navbar.Section>
-        </Navbar>
+      <Navbar className={classes.navbar}>
+        <Navbar.Section grow>
+          <Stack spacing={210}>{nav}</Stack>
+        </Navbar.Section>
+      </Navbar>
       {/* </MediaQuery> */}
     </>
   );
