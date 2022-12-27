@@ -15,7 +15,7 @@ import { Carousel } from "@mantine/carousel";
 import { useMediaQuery } from "@mantine/hooks";
 import { FC } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getNowPlaying, getTopRated} from "../api/movieApi";
+import { getNowPlaying, getTopRated } from "../api/movieApi";
 
 interface CardProps {
   image: string;
@@ -64,6 +64,15 @@ const useStyles = createStyles((theme) => ({
   grid: {
     marginTop: "3%",
   },
+
+  movie: {
+    "&:hover": {
+      transform: "scale(1.01)",
+      boxShadow: theme.shadows.lg,
+      borderRadius: 7,
+      backgroundColor: "#979797",
+    },
+  },
 }));
 const TopRatedMovie = () => {
   const { classes, cx } = useStyles();
@@ -73,7 +82,7 @@ const TopRatedMovie = () => {
     data: TopRatedData,
     isLoading: tRIsLoading,
     isSuccess: tRIsSuccess,
-  } = useQuery(["TopRated"], getTopRated);
+  } = useQuery(["TopRated"], () => getTopRated(1));
 
   // {
   //   tRIsSuccess && console.log("🥥", TopRatedData);
@@ -82,20 +91,20 @@ const TopRatedMovie = () => {
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Top Rated"} />
+        <MovieSecHeader title={"Top Rated"} link={"/movies/topRated/1"}/>
       </div>
-      <Grid grow gutter='sm' className={classes.grid}>
+      <Grid grow gutter='md' className={classes.grid}>
         {tRIsSuccess &&
           //@ts-ignore
-          TopRatedData.results.slice(0,7).map((item) => {
+          TopRatedData.results.slice(0, 7).map((item) => {
             return (
-              <Grid.Col span={3} key={item.id}>
-                <Box>
+              <Grid.Col span={3} key={item.id} className={classes.movie}>
+                <Box component='a' href='#'>
                   <Image
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
                     withPlaceholder
-                    height={200}
+                    height='auto'
                   ></Image>
                 </Box>
                 <div style={{ marginTop: "auto" }}>

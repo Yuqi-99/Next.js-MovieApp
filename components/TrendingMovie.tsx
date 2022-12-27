@@ -78,7 +78,7 @@ const TrendingMovie = () => {
     data: trendingData,
     isLoading: trdIsLoading,
     isSuccess: trdIsSuccess,
-  } = useQuery(["trending"], getTrending);
+  } = useQuery(["trending"], () => getTrending(1));
 
   // {
   //   trdIsSuccess && console.log("🥥", trendingData);
@@ -87,7 +87,7 @@ const TrendingMovie = () => {
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Trending"} />
+        <MovieSecHeader title={"Trending"} link={"/movies/trending/1"}/>
       </div>
       <Carousel
         className={classes.carousel}

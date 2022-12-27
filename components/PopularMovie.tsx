@@ -71,6 +71,7 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       transform: "scale(1.01)",
       boxShadow: theme.shadows.lg,
+      borderRadius: 7,
       backgroundColor: "#979797",
     },
   },
@@ -84,14 +85,14 @@ const PopularMovie = () => {
     data: popularData,
     isLoading: pIsLoading,
     isSuccess: pIsSuccess,
-  } = useQuery(["popular"], getPopular);
+  } = useQuery(["popular"], () => getPopular(1));
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Popular"} />
+        <MovieSecHeader title={"Popular"} link={"/movies/popular/1"} />
       </div>
-      <Grid grow gutter='sm' className={classes.grid}>
+      <Grid grow gutter='md' className={classes.grid}>
         {pIsSuccess &&
           //@ts-ignore
           popularData.results.slice(0, 7).map((item) => {
@@ -102,7 +103,7 @@ const PopularMovie = () => {
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
                     withPlaceholder
-                    height={200}
+                    height='auto'
                   ></Image>
                 </Box>
                 <div style={{ marginTop: "auto" }}>

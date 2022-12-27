@@ -38,18 +38,6 @@ const Movies = () => {
             );
           })}
       </Flex>
-      {/* <Flex direction='row' wrap='wrap'>
-        <Flex direction='column' wrap='wrap'>
-        <MovieComp title={"Action"} color={true} />
-        <MovieComp title={"Drama"} color={true} />
-        <MovieComp title={"Mystery"} color={true} />
-        </Flex>
-        <Flex direction='column' wrap='wrap'>
-        <MovieComp title={"Adventure"} color={true} />
-        <MovieComp title={"Family"} color={false} />
-        <MovieComp title={"Romance"} color={true} />
-        </Flex>
-      </Flex> */}
     </div>
   );
 };

@@ -64,6 +64,15 @@ const useStyles = createStyles((theme) => ({
   grid: {
     marginTop: "3%",
   },
+
+  movie: {
+    "&:hover": {
+      transform: "scale(1.01)",
+      boxShadow: theme.shadows.lg,
+      borderRadius: 7,
+      backgroundColor: "#979797",
+    },
+  },
 }));
 const UpcomingMovie = () => {
   const { classes, cx } = useStyles();
@@ -73,7 +82,7 @@ const UpcomingMovie = () => {
     data: UpcomingData,
     isLoading: upIsLoading,
     isSuccess: upIsSuccess,
-  } = useQuery(["upcoming"], getUpcoming);
+  } = useQuery(["upcoming"], ()=> getUpcoming(1));
 
   // {
   //   upIsSuccess && console.log("🥥", UpcomingData);
@@ -82,20 +91,20 @@ const UpcomingMovie = () => {
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <MovieSecHeader title={"Upcoming"} />
+        <MovieSecHeader title={"Upcoming"} link={"/movies/upcoming/1"}/>
       </div>
-      <Grid grow gutter='sm' className={classes.grid}>
+      <Grid grow gutter='md' className={classes.grid}>
         {upIsSuccess &&
           //@ts-ignore
-          UpcomingData.results.slice(0,7).map((item) => {
+          UpcomingData.results.slice(0, 7).map((item) => {
             return (
-              <Grid.Col span={3} key={item.id}>
-                <Box>
+              <Grid.Col span={3} key={item.id} className={classes.movie}>
+                <Box component='a' href='#'>
                   <Image
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
                     withPlaceholder
-                    height={200}
+                    height='auto'
                   ></Image>
                 </Box>
                 <div style={{ marginTop: "auto" }}>

@@ -67,6 +67,15 @@ const useStyles = createStyles((theme) => ({
     // backgroundColor: "#FFFFFF",
     marginTop: "3%",
   },
+
+  tv: {
+    "&:hover": {
+      transform: "scale(1.01)",
+      boxShadow: theme.shadows.lg,
+      borderRadius: 7,
+      backgroundColor: "#979797",
+    },
+  },
 }));
 
 const PopularTv = () => {
@@ -84,18 +93,18 @@ const PopularTv = () => {
       <div className={classes.div2}>
         <TvSecHeader title={"Popular"} />
       </div>
-      <Grid grow gutter='sm' className={classes.grid}>
+      <Grid grow gutter='md' className={classes.grid}>
         {pTvIsSuccess &&
           //@ts-ignore
           popularTvData.results.slice(0, 7).map((item) => {
             return (
-              <Grid.Col span={3} key={item.id}>
-                <Box>
+              <Grid.Col span={3} key={item.id} className={classes.tv}>
+                <Box component='a' href='#'>
                   <Image
                     src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
                     radius='sm'
                     withPlaceholder
-                    height={200}
+                    height='auto'
                   ></Image>
                 </Box>
                 <div style={{ marginTop: "auto" }}>

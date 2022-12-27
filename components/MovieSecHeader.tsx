@@ -1,8 +1,10 @@
 import { Badge, Box, Button, createStyles, Flex, Text } from "@mantine/core";
+import Link from "next/link";
 import { FC } from "react";
 
 interface TextProps {
   title: string;
+  link?: string;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -18,14 +20,14 @@ const useStyles = createStyles((theme) => ({
     borderColor: "#FFFFFF",
     color: "#FFFFFF",
     fontSize: "10px",
-    marginTop:15
+    marginTop: 15,
   },
   text: {
     alignSelf: "end",
   },
 }));
 
-const MovieSecHeader: FC<TextProps> = ({ title }) => {
+const MovieSecHeader: FC<TextProps> = ({ title, link }) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -53,6 +55,8 @@ const MovieSecHeader: FC<TextProps> = ({ title }) => {
           variant='subtle'
           opacity={0.7}
           className={classes.text}
+          component={Link}
+          href={`${link}`}
         >
           SEE MORE
         </Button>
