@@ -86,17 +86,17 @@ const AiringTodayTv = () => {
     data: airingTvData,
     isLoading: aTvIsLoading,
     isSuccess: aTvIsSuccess,
-  } = useQuery(["airingTodayTv"], getAiringToday);
+  } = useQuery(["airingTodayTv"], () => getAiringToday(1));
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <TvSecHeader title={"Airing Today"} />
+        <TvSecHeader title={"Airing Today"} link={"/tv/airingToday/1"} />
       </div>
       <Grid grow gutter='md' className={classes.grid}>
         {aTvIsSuccess &&
           //@ts-ignore
-          airingTvData.results.slice(6, 13).map((item) => {
+          airingTvData.results.slice(0, 7).map((item) => {
             return (
               <Grid.Col span={3} key={item.id} className={classes.tv}>
                 <Box component='a' href='#'>

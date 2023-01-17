@@ -91,7 +91,7 @@ const TopRatedTv = () => {
     data: TopTvData,
     isLoading: topTvIsLoading,
     isSuccess: topTvIsSuccess,
-  } = useQuery(["topRatedTv"], getTopRatedTv);
+  } = useQuery(["topRatedTv"], () => getTopRatedTv(1));
 
   {
     topTvIsSuccess && console.log("🥥", TopTvData);
@@ -100,7 +100,7 @@ const TopRatedTv = () => {
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <TvSecHeader title={"Top Rated"} />
+        <TvSecHeader title={"Top Rated"} link={"/tv/topRated/1"}/>
       </div>
       <Grid grow gutter='md' className={classes.grid}>
         {topTvIsSuccess &&

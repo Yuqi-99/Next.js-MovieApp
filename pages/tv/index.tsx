@@ -1,7 +1,7 @@
 import { createStyles, Flex, Text } from "@mantine/core";
-import MovieComp from "../components/MovieComp";
+import MovieComp from "../../components/MovieComp";
 import { useQuery } from "@tanstack/react-query";
-import { getGenreTv } from "../api/genreApi";
+import { getGenreTv } from "../../api/genreApi";
 import { Fragment } from "react";
 
 const useStyles = createStyles((theme) => ({

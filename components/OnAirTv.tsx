@@ -86,12 +86,12 @@ const OnAirTv = () => {
     data: onAirTvData,
     isLoading: onAirTvIsLoading,
     isSuccess: onAirTvIsSuccess,
-  } = useQuery(["OnAirTv"], getOnAir);
+  } = useQuery(["OnAirTv"], () => getOnAir(1));
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <TvSecHeader title={"On Air"} />
+        <TvSecHeader title={"On Air"} link={"/tv/onAir/1"}/>
       </div>
       <Grid grow gutter='md' className={classes.grid}>
         {onAirTvIsSuccess &&

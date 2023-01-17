@@ -1,8 +1,9 @@
 import { Badge, Box, Button, createStyles, Flex, Text } from "@mantine/core";
 import { FC } from "react";
-
+import Link from "next/link";
 interface TextProps {
   title: string;
+  link?: string;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -25,7 +26,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const TvSecHeader: FC<TextProps> = ({ title }) => {
+const TvSecHeader: FC<TextProps> = ({ title, link }) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -53,6 +54,8 @@ const TvSecHeader: FC<TextProps> = ({ title }) => {
           variant='subtle'
           opacity={0.7}
           className={classes.text}
+          component={Link}
+          href={`${link}`}
         >
           SEE MORE
         </Button>

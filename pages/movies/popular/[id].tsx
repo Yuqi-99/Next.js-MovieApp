@@ -67,7 +67,7 @@ const useStyles = createStyles((theme) => ({
 
   movieTitle: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
+    fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.2,
     fontSize: 20,

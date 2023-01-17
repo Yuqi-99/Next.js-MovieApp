@@ -86,12 +86,12 @@ const PopularTv = () => {
     data: popularTvData,
     isLoading: pTvIsLoading,
     isSuccess: pTvIsSuccess,
-  } = useQuery(["popularTv"], getPopularTv);
+  } = useQuery(["popularTv"], () => getPopularTv(1));
 
   return (
     <div className={classes.div}>
       <div className={classes.div2}>
-        <TvSecHeader title={"Popular"} />
+        <TvSecHeader title={"Popular"} link={"/tv/popular/1"} />
       </div>
       <Grid grow gutter='md' className={classes.grid}>
         {pTvIsSuccess &&

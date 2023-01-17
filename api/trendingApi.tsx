@@ -9,7 +9,7 @@ export const getTrending = (page?: number, config: ApiRequestConfig = {}) =>
     .get(`${MAIN_URL}/movie/day?api_key=${API_KEY}&page=${page}`, config)
     .then((res) => res.data);
 
-export const getTVTrending = (config: ApiRequestConfig = {}) =>
+export const getTVTrending = (page?: number,config: ApiRequestConfig = {}) =>
   api
-    .get(`${MAIN_URL}/tv/day?api_key=${API_KEY}`, config)
+    .get(`${MAIN_URL}/tv/day?api_key=${API_KEY}&page=${page}`, config)
     .then((res) => res.data);

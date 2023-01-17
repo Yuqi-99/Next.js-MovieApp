@@ -95,8 +95,8 @@ const NavLink: FC<NavbarLinkProps> = ({
 const mockdata = [
   { icon: IconHome2, label: "Home", path: "/" },
   { icon: IconCategory, label: "Category", path: "/" },
-  { icon: IconMovie, label: "Movie", path: "/moviegenre" },
-  { icon: IconDeviceTv, label: "TV", path: "/tvgenre" },
+  { icon: IconMovie, label: "Movie", path: "/movies" },
+  { icon: IconDeviceTv, label: "TV", path: "/tv" },
 ];
 
 const NavigationBar = () => {
@@ -113,7 +113,7 @@ const NavigationBar = () => {
         router.push(link.path);
       }}
     />
-  ));
+  )); 
 
   return (
     <>

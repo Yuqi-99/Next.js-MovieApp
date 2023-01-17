@@ -66,7 +66,7 @@ const useStyles = createStyles((theme) => ({
 
   movieTitle: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    fontWeight: 900,
+    fontWeight: 700,
     color: "#FFFFFF",
     lineHeight: 1.2,
     fontSize: 20,
@@ -99,7 +99,7 @@ export default function TopRated() {
 
   return (
     <div className={classes.div}>
-      <Text className={classes.title}>Trending Movies</Text>
+      <Text className={classes.title}>Top Rated Movies</Text>
 
       <Grid grow gutter='md' className={classes.grid}>
         {tRIsSuccess &&
